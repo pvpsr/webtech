@@ -1,0 +1,87 @@
+HTML FILE
+
+<html>
+<body>
+<form method=get action="slip23.php">
+<input type=radio name=ch value=1> Insert in stack<br>
+Enter No to insert<input type=text name=n1><br>
+<input type=radio name=ch value=2> Delete in stack<br>
+<input type=radio name=ch value=3> Display<br>
+<input type=submit>
+</form>
+</body>
+</html>
+
+
+
+PHP FILE
+
+<?php
+$stk=array(1,2,3,4,5);
+$ch=$_GET['ch'];
+if($ch==1)
+{
+echo "Insert element in stack <br>";
+$n1=$_GET['n1'];
+array_push($stk,$n1); //at end
+print_r($stk);
+}
+else if($ch==2)
+{
+echo "Delete element in stack <br>";
+array_pop($stk);
+print_r($stk);
+}
+else if($ch == 3)
+{
+echo"Given array is: <br>";
+print_r($stk);
+}
+?>
+
+
+
+Q.2) Dataset Name: winequality-red.csv [15]
+Write a program in python to perform following task
+
+a. Rescaling: Normalised the dataset using MinMaxScaler class
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+df = pd.read_csv(r'C:\dataset\winequality-red.csv')
+print('\n\n Data Scaled between 0 to 1')
+scaler = MinMaxScaler(feature_range=(0, 1))
+scaled = scaler.fit_transform(df)
+print(scaled.round(2))
+
+
+b. Standardizing Data (transform them into a standard Gaussian
+ distribution with a mean of 0 and a standard deviation of 1) 
+
+import pandas as pd
+import scipy.stats as s
+from sklearn import preprocessing
+df = pd.read_csv(r'C:\dataset\winequality-red.csv')
+print('\n\nInitial StandardvDeviation:')
+print('---------------------------------')
+print(round(df.std(),2))
+df_scaled = preprocessing.scale(df)
+df_scaled.mean(axis=0)
+df_scaled.std(axis=0)
+print('\nStandardized Data\n',df_scaled.round(2))
+print("\nScaled Mean:",s.tmean(df_scaled).round(2))
+print("\nScaled standard Deviation: ",round(df_scaled.std(),2))
+
+
+c. Binarizing Data using we use the Binarizer class (Using a binary threshold, it
+ to transform our data by marking the values above it 1 and those equal to or b
+
+import pandas as pd
+import scipy.stats as s
+from sklearn import preprocessing
+df = pd.read_csv(r'C:\dataset\winequality-red.csv')
+df_binarized = preprocessing.Binarizer(threshold=5).transform(df)
+print("\n Binarized data")
+print("-------------------")
+print(df_binarized)
+

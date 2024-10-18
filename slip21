@@ -1,0 +1,66 @@
+PHP FILE 
+
+<?php
+$temp_array=range(31,45);
+$tot_temp = 0;
+$count = count($temp_array);
+echo "Total temp values are: ".$count;
+foreach($temp_array as $temp)
+{
+$tot_temp += $temp;
+}
+$avg_high_temp = $tot_temp/$count;
+echo "<br> Average Temperature is : ".$avg_high_temp."
+";
+sort($temp_array);
+echo " <br> List of five lowest temperatures :";
+$res1= array_slice($temp_array,0,5);
+foreach($res1 as $high_temp)
+{
+echo "<br> $high_temp";
+}
+echo "<br> List of five highest temperatures :";
+$res1= array_slice($temp_array,10);
+foreach($res1 as $high_temp)
+{
+echo "<br> $high_temp";
+}
+?>
+
+
+
+Q2 A) Import dataset “iris.csv”. Write a Python program to create a Bar plot to get the
+frequency of the three species of the Iris data.
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+df = pd.read_csv(r'C:\dataset\Data.csv')
+x= df["Species"]
+y = df["SepalLengthCm"]
+plt.bar(x,y,color='green')
+plt.xlabel("Classes")
+plt.ylabel("Sepal Lenght")
+plt.title("Iris Species Count")
+plt.show()
+
+
+B)Write a Python program to create a histogram of the three species of the Iris data
+
+import matplotlib.pyplot as plt
+import pandas as pd
+# Load the data from the CSV file into a pandas DataFrame
+df = pd.read_csv(r'C:\dataset\Data.csv')
+# Create a histogram of the petal length for each species
+setosa = df[df['Species'] == 'Iris-setosa']
+versicolor = df[df['Species'] == 'Iris-versicolor']
+virginica = df[df['Species'] == 'Iris-virginica']
+plt.hist(setosa['PetalLengthCm'], label='Iris-setosa')
+plt.hist(versicolor['PetalLengthCm'], label='Iris-versicolor')
+plt.hist(virginica['PetalLengthCm'], label='Iris-virginica')
+# Add labels and title to the plot
+plt.xlabel('Petal Length')
+plt.ylabel('Frequency')
+plt.title('Histogram of Petal Length for Three Species of Iris')
+plt.legend()
+plt.show()

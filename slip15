@@ -1,0 +1,98 @@
+HTML FILE
+
+<html>
+<body>
+<form action="Slip15.php" method=get>
+Enter a String<input type=text name=t1><br>
+<input type=radio name=op value=1>Select 5 words<br>
+<input type=radio name=op value=2>LowerCase<br>
+<input type=radio name=op value=3>Padding<br>
+<input type=radio name=op value=4>Remove Spaces<br>
+<input type=radio name=op value=5>Reverse<br><br>
+<input type=submit value=submit>
+</form>
+</body>
+</html>
+
+
+PHP FILE
+
+<?php
+$str=$_GET['t1'];
+$ch=$_GET['op'];
+if($ch==1)
+{
+$ar=explode(" ",$str,6);
+foreach($ar as $a)
+echo "$a<br>";
+}
+else if($ch==2)
+{
+$str=strtolower($str);
+echo $str;
+$str=ucwords($str);
+echo "<br>$str";
+}
+else if($ch==3)
+{
+$str=str_pad($str,20,"*",STR_PAD_BOTH);
+echo $str;
+}
+else if($ch==4)
+{
+$str=trim($str);
+echo $str;
+}
+else if($ch==5)
+{
+$str=strrev($str);
+echo $str;
+}
+?>
+
+
+
+Q2 A) Generate a random array of 50 integers and display them
+using a line chart, scatter plot, histogram and box plot. 
+Apply appropriate color, labels and styling options. 
+
+import matplotlib.pyplot as plt
+import numpy as np
+# Generate random data
+data = np.random.randint(0, 100, 50)
+# Line chart
+plt.subplot(2,2,1)
+plt.plot(data, color='blue', marker='o')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+# Scatter plot
+plt.subplot(2,2,2)
+plt.scatter(range(len(data)), data, color='green', marker='x')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+# Histogram
+plt.subplot(2,2,3)
+plt.hist(data, bins=10, color='red', alpha=0.7)
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+# Box plot
+plt.subplot(2,2,4)
+plt.boxplot(data)
+plt.title('Box Plot')
+plt.xlabel('Value')
+plt.tight_layout()
+plt.show()
+
+
+B) Create two lists, one representing subject names and the other representing m
+obtained in those subjects. Display the data in a pie chart. 
+
+import matplotlib.pyplot as plt
+subjects = ['WT', 'FDS', 'OS', 'CN', 'TCS']
+marks = [90, 88, 78, 95, 70]
+plt.pie(marks, labels=subjects, autopct='%1.1f%%')
+plt.title('Pie Chart')
+plt.show()

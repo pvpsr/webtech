@@ -1,0 +1,88 @@
+HTML FILE
+
+<html>
+<body>
+<form method="get" action="slip22.php">
+<input type="radio" name="ch" value=1> Insert in queue<br>
+Enter No to insert<input type="text" name="n1"><br>
+<input type="radio" name="ch" value=2> Delete in queue<br>
+<input type="radio" name="ch" value=3> Display<br>
+<input type="submit" value=submit>
+</form>
+</body>
+</html>
+
+
+
+PHP FILE 
+
+<?php
+$stk=array(1,2,3,4,5);
+$ch=$_GET['ch'];
+if($ch==1)
+{ 
+ echo "Insert element in queue <br>"; 
+ $n4=$_GET['n1']; 
+ array_push($stk,$n1);//Insert element at last 
+ print_r($stk); 
+}
+else if($ch==2) 
+{ 
+ echo "Delete element from queue. <br>"; 
+ $res=array_shift($stk); //at begining 
+ echo "Deleted element is:".$res; 
+}
+else if($ch ==3) 
+{ 
+ echo"Given array is: <br>"; 
+ print_r($stk); 
+}
+?>
+
+
+
+
+Q.2) Dataset Name: winequality-red.csv [15]
+Write a program in python to perform following tasks
+
+a. Rescaling: Normalised the dataset using MinMaxScaler class
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+df = pd.read_csv(r'C:\dataset\winequality-red.csv')
+print('\n\n Data Scaled between 0 to 1')
+scaler = MinMaxScaler(feature_range=(0, 1))
+scaled = scaler.fit_transform(df)
+print(scaled.round(2))
+
+
+b. Standardizing Data (transform them into a standard Gaussian distribution with
+    a standard deviation of 1)
+
+import pandas as pd
+import scipy.stats as s
+from sklearn import preprocessing
+df = pd.read_csv(r'C:\dataset\winequality-red.csv')
+print('\nInitial Mean: ',s.tmean(df).round(2))
+print('\n\nInitial StandardvDeviation:')
+print('---------------------------------')
+print(round(df.std(),2))
+df_scaled = preprocessing.scale(df)
+df_scaled.mean(axis=0)
+df_scaled.std(axis=0)
+print('\nStandardized Data\n',df_scaled.round(2))
+print("\nScaled Mean:",s.tmean(df_scaled).round(2))
+print("\nScaled standard Deviation: ",round(df_scaled.std(),2))
+
+
+c. Normalizing Data ( rescale each observation to a length of 1 (a unit norm). Fo
+Normalizer class.)
+
+import pandas as pd
+import scipy.stats as s
+from sklearn import preprocessing
+df = pd.read_csv(r'C:\dataset\winequality-red.csv')
+dn = preprocessing.normalize(df,norm = 'l1')
+print("\n L1 Normalized Data")
+print("-----------------------")
+print(dn.round(2))

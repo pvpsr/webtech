@@ -1,0 +1,76 @@
+HTML FILE
+
+<html>
+<head>
+<link rel="stylesheet" href="bootstrap.min.css">
+<title>NRC</title>
+</head>
+<body>
+<div class="row ">
+<div class="col-12 bg-primary">
+<h3>header</h3>
+</div>
+</div>
+<div class="row">
+<div class="col-4 bg-info">
+<h4>Menu</h4>
+</div>
+<div class="col-8 bg-warning ">
+<p>this is collge information</p>
+</div>
+</div>
+<div class="row">
+<div class="col-12 bg-danger">
+<h3>Footer</h3>
+</div>
+</div>
+</body>
+</html>
+
+
+
+Q2 A) Write a Python program for Handling Missing Value. Replace
+missing age column with mean of that column.(Use Data.csv file)
+
+import pandas as pd
+df = pd.read_csv(r'C:\dataset\Data.csv')
+print(df)
+agemean = df['Age'].mean()
+salarymean = df['Salary'].mean()
+df['Age'].fillna(agemean, inplace=True)
+df['Salary'].fillna(salarymean, inplace=True)
+print("\n\nMissing values Replaced with Mean:")
+print(df)
+
+
+B) Write a Python program to generate a line plot of name Vs salary
+
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv(r'C:\dataset\Data.csv')
+names = df['Country']
+salary = df['Salary']
+plt.plot(names, salary, marker='o', linestyle='-', color='b')
+plt.title('Name vs Salary')
+plt.xlabel('Name')
+plt.ylabel('Salary')
+plt.grid(True)
+plt.show()
+
+
+C) Download the heights and weights dataset and load the dataset
+ from a given csv file into a dataframe. Print the first, last
+ 10 rows and random 20 rows also display shape of the dataset.
+
+ import pandas as pd
+ df = pd.read_csv(r'C:\dataset\HeightWeight.csv')
+ print("First 10 row:")
+ print(df.head(10))
+ print("\nLast 10 rows:")
+ print(df.tail(10))
+ print("\nRandom 20 rows:")
+ print(df.sample(20))
+ print("\nShape of Data Frame:")
+ print(df.shape)
+
+ 

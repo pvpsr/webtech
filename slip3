@@ -1,0 +1,56 @@
+HTML FILE
+
+<html>
+<head>
+<title>Accenture</title></head>
+<body style="background-color:#4CBB17">
+<h3 style="font-size:60px; color:red; font-style:Comic Sans MS "> Accenture</h3>
+<p style=" color:blue; font-size:25px">Accenture plc is an Irish-American professional
+services company based in Dublin,
+specializing in information technology (IT) services and consulting.<br>
+As of 2022,Accenture is considered
+the largest consulting firm in the world by number of employees.<br>
+Accenture is a $61.6-billion-in-annual-revenue technology and consulting company
+incorporated in Dublin, Ireland.
+Led by Chair & CEO Julie Sweet, who prior to her promotion in 2019 served as CEO of
+Accentures business in North America,
+the Fortune Global 500 information technology services company has supplemented its
+growth
+through high-profile acquisitions like that of ad agency Droga5. With 721,000 people
+worldwide</p>
+</html>
+
+
+
+Q2 A)Write a Python program to create box plots to see how each feature
+i.e. Sepal Length,Sepal Width, Petal Length, Petal Width are distributed
+across the three species. (Use iris.csv dataset) 
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+df = pd.read_csv(r'C:\dataset\iris.csv')
+plt.figure(figsize=(12, 6))
+plt.subplot(2, 2, 1)
+sns.boxplot(x="Species", y="SepalLengthCm", data=iris)
+plt.title("Sepal Length by Species")
+plt.subplot(2, 2, 2)
+sns.boxplot(x="Species", y="SepalWidthCm", data=iris)
+plt.title("Sepal Width by Species")
+plt.subplot(2, 2, 3)
+sns.boxplot(x="Species", y="PetalLengthCm", data=iris)
+plt.title("Petal Length by Species")
+plt.subplot(2, 2, 4)
+sns.boxplot(x="Species", y="PetalWidthCm", data=iris)
+plt.title("Petal Width by Species")
+plt.tight_layout()
+plt.show()
+
+
+B) Write a Python program to view basic statistical details of
+ the data (Use Heights and Weights Dataset) 
+
+ import pandas as pd
+ df = pd.read_csv(r'C:\dataset\HeightWeight.csv')
+ print("Statistical Detail:")
+ print(df.describe())

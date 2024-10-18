@@ -1,0 +1,94 @@
+HTML FILE
+
+<html>
+<head>
+<title> String operations </title>
+<body>
+<form name = "String" action = "slip18.php" method = "get">
+<h2> Select Operations</h2>
+<input type = "radio" name ="s" value=1>Reverse the order</br></br>
+<input type = "radio" name ="s" value=2>Traverse the element</br></br>
+<input type = "radio" name ="s" value=3>Convert the array elements</br></br>
+<input type = "radio" name ="s" value=4>Display the elements of an array along with
+key.</br></br>
+<input type=submit value=send>
+</body>
+</html>
+
+
+PHP FILE
+
+<?php
+$a = array("a"=>1,"b"=>21,"c"=> 56);
+switch($_GET['s'])
+{
+case 1:
+echo "Orginal Array is <br>";
+print_r($a);
+echo "reverse Array is <br>";
+$c =array_reverse($a);
+print_r($c);
+break;
+case 2:
+echo "Orginal Array is <br>";
+print_r($a);
+echo "traversing Array is <br>";
+foreach($a as $v)
+echo "$v<br>";
+break;
+case 3:
+echo " Original array is<br>";
+print_r($a);
+echo "elements into individual variables<br>";
+$e = extract($a);
+print_r($e);
+break;
+case 4:
+echo " Original array is<br>";
+print_r($a);
+echo "key value pair is<br>";
+foreach ($a as $k=>$v)
+{
+print_r("$k=>$v");
+echo"<br>";
+}
+break;
+default:
+echo "Invalid choice!!";
+}
+?>
+
+
+
+Q2 A) Write a Python program to create box plots to see how each feature i.e. Sepal
+Sepal Width, Petal Length, Petal Width are distributed across the three species. 
+dataset)
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+iris = pd.read_csv("D:\Computer Science\TY\SEM5\FDS\iris.csv")
+plt.subplot(2, 2, 1)
+sns.boxplot(x="Species", y="SepalLengthCm", data=iris)
+plt.title("Sepal Length by Species")
+plt.subplot(2, 2, 2)
+sns.boxplot(x="Species", y="SepalWidthCm", data=iris)
+plt.title("Sepal Width by Species")
+plt.subplot(2, 2, 3)
+sns.boxplot(x="Species", y="PetalLengthCm", data=iris)
+plt.title("Petal Length by Species")
+plt.subplot(2, 2, 4)
+sns.boxplot(x="Species", y="PetalWidthCm", data=iris)
+plt.title("Petal Width by Species")
+plt.tight_layout()
+plt.show()
+
+
+B) Use the heights and weights dataset and load the dataset from a given csv file
+dataframe. Print the first, last 5 rows and random 10 row
+
+import pandas as pd
+df = pd.read_csv(r'C:\dataset\HeightWeight-red.csv')
+print("First five: \n",df.head(5))
+print("Last five:\n",df.tail(5))
+print("Random Ten:\n",df.sample(n=10))

@@ -1,0 +1,78 @@
+HTML FILE 
+
+<html>
+<head>
+<head><title>NRC ChessBoard</title>
+<style>
+.clr1
+{
+background-color:black;
+}
+.clr2
+{
+background-color:white;
+}
+table
+{
+width:100%;
+height:100%;
+}
+</style>
+<?php
+echo"<table border=1>";
+for($i=1;$i<=8;$i++)
+{
+echo"<tr>";
+if($i%2==0)
+{
+for($j=1;$j<=8;$j++)
+{
+if($j%2==1)
+echo"<td class=clr2></td>";
+else
+echo"<td class=clr1></td>";
+}
+}
+else
+{
+for($j=0;$j<8;$j++)
+{
+if($j%2==0)
+echo"<td class=clr1></td>";
+else
+echo"<td class=clr2></td>";
+}
+}
+echo "</tr>";
+}
+echo"</table>" ;
+?>
+</html>
+
+
+
+Q2 A) Write a Python program to create a graph to find relationship
+ between the petal length and petal width.(Use iris.csv dataset)
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+df = pd.read_csv(r'C:\dataset\iris.csv')
+sns.scatterplot(data=df, x="PetalLengthCm", y="PetalWidthCm", hue="Species")
+plt.title("Relationship Between Petal Length and Petal Width")
+plt.xlabel("Petal Length")
+plt.ylabel("Petal Width")
+plt.show()
+
+
+B) Write a Python program to find the maximum and minimum value of a
+ given flattened array. 
+
+import numpy as np
+arr = np.array([[0, 4], [2, 3]])
+print("Original flattened array:")
+print(arr)
+print("Maximum value of flattened array:")
+print(np.max(arr))
+print("Minimum value of flattened array:")
+print(np.min(arr))

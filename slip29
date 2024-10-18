@@ -1,0 +1,47 @@
+HTML FILE
+
+<html>
+<form action=slip29.php method=get>
+Enter Event Name:<input type=text name=t1><br>
+<input type=submit value="Change Status">
+</form>
+</html>
+
+
+PHP FILE
+
+<?php
+$con=pg_connect("host=localhost user=postgres password=nrc bname=practicals22");
+//echo $con;
+$en=$_GET['t1'];
+$ws='Working';
+$x=pg_query($con,"update comm_mem set cstatus='$ws' from event_comm,event
+where comm_mem.cno=event_comm.cno and event_comm.eno=event.eno and
+etitle='$en'");
+if($x>0)
+echo "Working status updated";
+else
+echo "Status not updated";
+?>
+
+
+
+Q2 Write a Python program to perform the following tasks :
+a. Apply OneHot coding on Country column.
+b. Apply Label encoding on purchased column
+
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+df = pd.read_csv(r'C:\dataset\Data.csv')
+#a. Apply OneHot coding on Country column.
+hotencoder = OneHotEncoder()
+enc_df = pd.DataFrame(hotencoder.fit_transform(df[['Country']]).toarray())
+df = df.join(enc_df)
+print('\n\nOneHot encoding on country column')
+print(df)
+#b. Apply Label encoding on purchased column
+labelencoder = LabelEncoder()
+df['Purchased'] = labelencoder.fit_transform(df['Purchased'])
+print('\n\n Label encoding on purchased column')
+print(df)

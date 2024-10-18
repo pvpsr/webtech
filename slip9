@@ -1,0 +1,98 @@
+HTML FILE
+
+<html>
+<body>
+<form action="slip9.php"method="get">
+Enter a string:<input type="text" name="str1"><br>
+choose a label
+<select name="sep" id="sep">
+<option value="#">#</option>
+<option value="!">!</option>
+<option value="@">@</option>
+</select><br>
+<input type="radio" name="op" value="a">Split The String Using The Seperator<br>
+<input type="radio" name="op" value="b">Replace The Occurences Of The
+Seperator With Another Seperator<br>
+<input type="radio" name="op" value="c">Find The Last Word Of The String<br>
+<input type="submit"value="submit">
+</form>
+</body>
+</html>
+
+
+PHP FILE
+
+<?php
+$str=$_GET['str1'];
+$sep=$_GET['sep'];
+$op=$_GET['op'];
+echo "$str $sep $op";
+switch($op)
+{
+case 'a':$m=explode($sep,$str);
+foreach($m as $a){
+echo "$a<br>";
+}
+break;
+case 'b':
+$cnt=substr_count($str,$sep);
+$n=str_replace($sep,"!",$str,$cnt);
+echo "After changing separators<br>";
+echo $n;
+break;
+case 'c':$ar=explode(" ",$str);
+$cnt=count($ar);
+echo "This is the last word : ".$ar[$cnt-1];
+break;
+}
+?>
+
+
+
+Q2 A) Generate a random array of 50 integers and display them using
+a line chart, scatter plot. Apply appropriate color, labels and
+styling options. 
+
+import matplotlib.pyplot as plt
+import numpy as np
+# Generate random data
+data = np.random.randint(0, 100, 50)
+# Line chart
+plt.subplot(2,2,1)
+plt.plot(data, color='blue', marker='o')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+# Scatter plot
+plt.subplot(2,2,2)
+plt.scatter(range(len(data)), data, color='green', marker='x')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.tight_layout()
+plt.show()
+
+
+B) Create two lists, one representing subject names and the other
+ representing marks obtained in those subjects. Display the data in a
+ pie chart. 
+
+ import matplotlib.pyplot as plt
+ subjects = ['WT', 'FDS', 'OS', 'CN', 'TCS']
+ marks = [90, 88, 78, 95, 70]
+ plt.pie(marks, labels=subjects, autopct='%1.1f%%')
+ plt.title('Pie Chart')
+ plt.show()
+
+
+C) Write a program in python to perform following task (Use winequality-red.csv )
+Import Dataset and do the followings:
+
+import pandas as pd
+df = pd.read_csv(r'C:\dataset\winequality-red.csv')
+print('Description of the dataset:')
+print(df.describe())
+print('\nShape of the dataset:', df.shape)
+print('\nFirst 3 rows from the dataset:')
+print(df.head(3))
+

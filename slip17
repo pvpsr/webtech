@@ -1,0 +1,58 @@
+PHP FILE
+
+<?php
+$a =$_GET['v1'];
+$b =$_GET['v2'];
+$c =$_GET['v3'];
+$sum=0;
+echo "<h1> <center>Marksheet</center></h1>";
+echo "<h3><center>student id:$a</h3><br>";
+$d =explode(",",$b);
+$e =explode(",",$c);
+echo "<center><table border=2 width=50%>";
+for($i=0;$i<=4;$i++)
+{
+echo "<tr>
+<td>$d[$i]</td>
+<td>$e[$i]</td>
+</tr>";
+$sum=$e[$i]+$sum;
+}
+$result=$sum/5;
+echo "<tr><td>Total marks </td><td>$sum</td>";
+echo"<tr><td>Percentage</td><td>$result</td></tr>";
+echo "</center>"
+?>
+
+
+
+Q2 A) Write a Python program to draw scatter plots to compare two
+ features of the iris dataset
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns # For loading the Iris dataset
+iris = pd.read_csv("D:\Computer Science\TY\SEM5\FDS\iris.csv")
+sns.scatterplot(data=iris, x="SepalLengthCm", y="SepalWidthCm", hue="Species
+plt.title("Comparison of Sepal Length and Sepal Width")
+plt.xlabel("Sepal Length (cm)")
+plt.ylabel("Sepal Width (cm)")
+plt.show()
+
+
+B) Write a Python program to create a data frame containing columns name, age , s
+department . Add 10 rows to the data frame. View the data frame. 
+
+import pandas as pd
+df = pd.DataFrame(columns = ['name','age','salary','department'])
+df.loc[0] = ['jitu',16,85000,'Biology']
+df.loc[1] = ['Austin',19,95000,'computer']
+df.loc[2] = ['nyaz',17,65000,'commerce']
+df.loc[3] = ['saquib',20,77000,'Blockchain']
+df.loc[4] = ['Naufil',18,80000,'Electronices']
+df.loc[5] = ['anjali',11,65000,'science']
+df.loc[6] = ['Kunal',19,65000,'agriculture']
+df.loc[7] = ['Tanishq',18,77000,'Networks']
+df.loc[8] = ['Arpita',30,65000,'Math']
+df.loc[9] = ['vaishavi',15,85000,'computer']
+print(df)

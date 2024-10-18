@@ -1,0 +1,83 @@
+HTML FILE
+
+<html>
+<head>
+<title> marksheet </title>
+</head>
+<body>
+<form name = "string" action = "slip16.php" method = "get">
+student id <input type = "text" name = "v1"/></br></br>
+Subject name<input type = "text" name = "v2"/></br></br>
+subject marks<input type = "text" name = "v3"/></br></br>
+<button type = "submit"> display marklist </button>
+</form>
+</body>
+</html>
+
+
+PHP FILE
+
+<?php
+$a =$_GET['v1'];
+$b =$_GET['v2'];
+$c =$_GET['v3'];
+$sum=0;
+echo "<h1> <center>Marksheet</center></h1>";
+echo "<h3><center>student id:$a</h3><br>";
+$d =explode(",",$b);
+$e =explode(",",$c);
+echo "<center><table border=2 width=50%>";
+for($i=0;$i<=4;$i++)
+{
+echo "<tr>
+<td>$d[$i]</td>
+<td>$e[$i]</td>
+</tr>";
+$sum=$e[$i]+$sum;
+}
+$result=$sum/5;
+echo "<tr><td>Total marks </td><td>$sum</td>";
+echo"<tr><td>Percentage</td><td>$result</td></tr>";
+echo "</center>"
+?>
+
+
+
+Q2 A) Write a python program to create two lists, one representing subject names and the other
+representing marks obtained in those subjects. Display the data in a pie chart and bar chart.
+
+import matplotlib.pyplot as plt
+subjects = ['WT', 'FDS', 'OS', 'CN', 'TCS']
+marks = [90, 88, 78, 95, 70]
+# Pie chart
+plt.subplot(121)
+plt.pie(marks, labels=subjects, autopct='%1.1f%%')
+plt.title('Pie Chart')
+# Bar chart
+plt.subplot(122)
+plt.bar(subjects, marks, color='skyblue')
+plt.title('Bar Chart')
+plt.xlabel('Subjects')
+plt.ylabel('Marks')
+plt.show()
+
+
+B) Write a python program to create a data frame for students’ information such as name,
+graduation percentage and age. Display average age of students, average of graduation
+percentage.
+
+import pandas as pd
+df = pd.DataFrame(columns = ['name','age','Per'])
+df.loc[0] = ['jitu',3,85]
+df.loc[1] = ['Austin',19,95]
+df.loc[2] = ['saquib',20,77]
+df.loc[3] = ['Naufil',30,80]
+df.loc[4] = ['Kunal',21,65]
+df.loc[5] = ['Tanishq',18,77]
+df.loc[6] = ['Arpita',17,65]
+df.loc[7] = ['vaishavi',19,85]
+print(df)
+avg_age = df['age'].mean()
+avg_pre = df['Per'].mean()
+print('Average age of students:', avg_age)
+print('Average graduation percentage:', avg_pre)

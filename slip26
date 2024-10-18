@@ -1,0 +1,71 @@
+HTML FILE
+
+<html>
+<form action=slip26.php method=get>
+Enter Hospital Name<input type=text name=t1><br>
+<input type=submit value="Display Doctors">
+</form>
+</html>
+
+
+PHP FILE 
+
+<?php
+$con=pg_connect("host=localhost user=postgres password=nrc dbname=slip26");
+$cn=$_GET['t1'];
+$rs=pg_query($con,"select * from doctor,hospital where hname='$cn' and hsno=hno");
+while($row=pg_fetch_array($rs))
+{
+echo "Id:$row[0]
+Name:$row[1]
+Pin:$row[4]<br>";
+}
+?>
+
+
+
+Q2 A) Generate a random array of 50 integers and display them using a line chart, sc
+histogram and box plot. Apply appropriate color, labels and styling options.
+
+import matplotlib.pyplot as plt
+import numpy as np
+# Generate random data
+data = np.random.randint(0, 100, 50)
+# Line chart
+plt.subplot(2,2,1)
+plt.plot(data, color='blue', marker='o')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+# Scatter plot
+plt.subplot(2,2,2)
+plt.scatter(range(len(data)), data, color='green', marker='x')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+# Histogram
+plt.subplot(2,2,3)
+plt.hist(data, bins=10, color='red', alpha=0.7)
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+# Box plot
+plt.subplot(2,2,4)
+plt.boxplot(data)
+plt.title('Box Plot')
+plt.xlabel('Value')
+plt.tight_layout()
+plt.show()
+
+
+B) Create two lists, one representing subject names and the other representing ma
+obtained in those subjects. Display the data in a bar chart.
+
+import matplotlib.pyplot as plt
+subjects = ['WT', 'FDS', 'OS', 'CN', 'TCS']
+marks = [90, 88, 78, 95, 70]
+plt.bar(subjects, marks, color='skyblue')
+plt.title('Bar Chart')
+plt.xlabel('Subjects')
+plt.ylabel('Marks')
+plt.show()

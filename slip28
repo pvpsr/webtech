@@ -1,0 +1,59 @@
+PHP FILE
+
+<?php
+$fp=fopen("student.dat","r");
+$ar=fscanf($fp,"%s%s%s%s%s%s%s%s",$rl,$nm,$os,$wt,$ds,$py,$jv,$cn);
+echo "<table
+border=1><tr><th>$rl</th><th>$nm</th><th>$os</th><th>$wt</th><th>$ds</th><t
+h>$py</th><th>$jv</th><th>$cn</th><th>Percentage</tr>";
+while(($ar=fscanf($fp,"%s%s%d%d%d%d%d%d",$rl,$nm,$os,$wt,$ds,$py,$jv,$cn))!=f
+alse)
+{
+$total=$os+$wt+$ds+$py+$jv+$cn;
+$per=$total/6;
+echo
+"<tr><th>$rl</th><th>$nm</th><th>$os</th><th>$wt</th><th>$ds</th><th>$py</t
+h><th>$jv</th><th>$cn</th><td>$per</td></tr>";
+}
+echo "</table>";
+?>
+
+
+Q2] 
+1. To create a dataframe containing columns name, age and percentage. Add 10 rows
+dataframe. View the dataframe. 
+
+import pandas as pd
+df = pd.DataFrame(columns = ['name','age','Per'])
+df.loc[0] = ['jitu',3,85]
+df.loc[1] = ['Austin',19,95]
+df.loc[2] = [None,20,77]
+df.loc[3] = ['Naufil',30,80]
+df.loc[4] = [None,21,650]
+df.loc[5] = ['Tanishq',18,77]
+df.loc[6] = ['Arpita',17,65]
+df.loc[7] = ['vaishavi',19,85]
+print(df)
+
+
+2. To print the shape, number of rows-columns, data types, feature names and the
+the data
+
+print('\nShape:', df.shape)
+print('\nrows & columns:', df.shape[0], 'rows,', df.shape[1], 'columns')
+print('\nData types:\n',df.dtypes)
+print('\nFeature:\n',df.columns)
+print('\nDescription:\n',df.describe())
+
+
+3. To view basic statistical details of the data.
+
+print('Description of the dataset:')
+print(df.describe())
+
+
+4. To Add 5 rows with duplicate values and missing values. Add a column ‘remarks’
+values. Display the data.
+
+df['remarks'] = None
+print(df)

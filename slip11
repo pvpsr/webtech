@@ -1,0 +1,38 @@
+HTML FILE
+
+<html>
+<head>
+<link rel=stylesheet href="bootstrap.min.css">
+</head>
+<body>
+<form >
+<input type= button value="primary" class="btn btn-primary">
+<input type= button value="warning" class="btn btn-warning">
+<input type= button value="secondary"class="btn btn-Secondary">
+<input type= button value="success" class="btn btn-success">
+<input type= button value="info" class="btn btn-info">
+<input type= button value="danger" class="btn btn-danger">
+</body>
+</html>
+
+
+Q2 A) Write a Python program to create a Pie plot to get the
+frequency of the the Iris data (Use iris.csv)
+
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv(r'C:\dataset\iris.csv')
+plot=df['Species'].value_counts()
+plt.pie(plot,labels=plot.index,autopct='%1.1f%%')
+plt.show()
+
+
+B) Write a Python program to view basic statistical
+ details of the data.(Use wineequality-red.csv) 
+
+ import pandas as pd
+ df = pd.read_csv(r'C:\dataset\wineequality-red.csv')
+ print("Statistical details")
+ print(df.describe())
+ print("\n\n")
+ 

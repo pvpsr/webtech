@@ -1,0 +1,89 @@
+HTML FILE
+
+<html>
+<body>
+<form action="slip20.php" method="GET">
+Enter Your Choice:<br>
+<input type="radio" name="ch" value=1> Split an array into chunks<br>
+<input type="radio" name="ch" value=2> Sort array by values without changing key
+values <br>
+<input type="radio" name="ch" value=3> Filter even elements from array <br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+
+PHP FILE
+
+<?php
+$choice=$_GET['ch'];
+$arr=array('a'=>1,'b'=>20,'c'=>13,'d'=>5,'e'=>18,'f'=>12,'g'=>7,'h'=>8,'i'=>15,'j'=>10);
+switch($choice)
+{
+case 1:
+print_r(array_chunk($arr,2));
+break;
+case 2:
+asort($arr);
+echo "Array in ascending order:<br>";
+print_r($arr);
+break;
+case 3:
+function even($var)
+{
+return $var%2==0?1:0;
+}
+$br=array_filter($arr,"even");
+print_r($br);
+break;
+}
+?>
+
+
+
+Q2 A) Generate a random array of 50 integers and display them using a line chart, sc
+histogram and box plot. Apply appropriate color, labels and styling options
+
+import matplotlib.pyplot as plt
+import numpy as np
+# Generate random data
+data = np.random.randint(0, 100, 50)
+# Line chart
+plt.subplot(2,2,1)
+plt.plot(data, color='blue', marker='o')
+plt.title('Line Chart')
+plt.xlabel('Index')
+plt.ylabel('Value')
+# Scatter plot
+plt.subplot(2,2,2)
+plt.scatter(range(len(data)), data, color='green', marker='x')
+plt.title('Scatter Plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+# Histogram
+plt.subplot(2,2,3)
+plt.hist(data, bins=10, color='red', alpha=0.7)
+plt.title('Histogram')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+# Box plot
+plt.subplot(2,2,4)
+plt.boxplot(data)
+plt.title('Box Plot')
+plt.xlabel('Value')
+plt.tight_layout()
+plt.show()
+
+
+B) Add two outliers to the above data and display the box plot. 
+
+import matplotlib.pyplot as plt
+import numpy as np
+data = np.random.randint(0, 100, 50)
+data = np.append(data, [150, 200])
+plt.boxplot(data, vert=False)
+plt.title('Box Plot with Outliers')
+plt.xlabel('Value')
+plt.show()
+
