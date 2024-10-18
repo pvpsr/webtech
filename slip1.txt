@@ -1,0 +1,24 @@
+A ) Write a Python program to create a Pie plot to get the
+ frequency of the the Iris data (Use iris.csv)
+
+
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv(r'C:\dataset\iris.csv')
+plot=df['Species'].value_counts()
+plt.pie(plot,labels=plot.index,autopct='%1.1f%%')
+plt.show()
+
+
+
+
+
+B  ) Write a Python program to view basic statistical
+ details of the data.(Use wineequality-red.csv)
+
+
+import pandas as pd
+df = pd.read_csv(r'C:\dataset\wineequality-red.csv')
+print("Statistical details")
+print(df.describe())
+print("\n\n")
